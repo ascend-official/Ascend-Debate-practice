@@ -6,11 +6,8 @@
 <title>Ascend official</title>
 
 <style>
-/* =====================
-   Base Design System
-===================== */
 :root {
-  --brand: #C2878F;          /* Old Rose */
+  --brand: #C2878F;
   --bg: #FAFAF8;
   --text-main: #1C1C1E;
   --text-sub: #6E6E73;
@@ -34,27 +31,26 @@ a {
   text-decoration: none;
 }
 
-/* =====================
-   Header
-===================== */
 header {
   height: 56px;
-  border-bottom: 1px solid var(--border);
+  background: var(--brand);   
+  border-bottom: none;       
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
 }
-
+   
+header strong {
+  color: white;
+}
+   
 nav a {
   margin-left: 20px;
   font-size: 14px;
-  color: var(--text-sub);
+  color: rgba(255,255,255,0.85);
 }
-
-/* =====================
-   Layout
-===================== */
+   
 main {
   max-width: 1100px;
   margin: auto;
@@ -65,9 +61,6 @@ main {
   margin-bottom: 80px;
 }
 
-/* =====================
-   Home Cards
-===================== */
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -86,17 +79,6 @@ main {
   transform: translateY(-2px);
 }
 
-.card h2 {
-  margin-top: 0;
-}
-
-.card.selected {
-  border-color: var(--brand);
-}
-
-/* =====================
-   Generator
-===================== */
 .generator {
   display: none;
 }
@@ -126,27 +108,17 @@ button {
   color: var(--text-sub);
 }
 
-/* =====================
-   Accordion
-===================== */
-.accordion {
+details.accordion {
   border-top: 1px solid var(--border);
   margin-top: 24px;
 }
 
-.accordion summary {
+details.accordion summary {
   cursor: pointer;
   padding: 16px 0;
   font-weight: 600;
 }
 
-.accordion div {
-  padding-bottom: 24px;
-}
-
-/* =====================
-   Mobile
-===================== */
 @media (max-width: 768px) {
   .cards {
     grid-template-columns: 1fr;
@@ -160,10 +132,10 @@ button {
 <header>
   <strong>Ascend official</strong>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#guide">Guide</a>
-    <a href="#learn">Learn</a>
-    <a href="#about">About</a>
+    <a href="index.html">Home</a>
+    <a href="guide.html">Guide</a>
+    <a href="learn.html">Learn</a>
+    <a href="about.html">About</a>
   </nav>
 </header>
 
@@ -188,9 +160,9 @@ button {
   </div>
 
   <p style="margin-top:40px;">
-    <a href="#learn">New to English Debate?</a> →
+    <a href="learn.html">New to English Debate?</a> →
     <br/>
-    <a href="#guide">How should I practice?</a> →
+    <a href="guide.html">How should I practice?</a> →
   </p>
 </section>
 
@@ -201,15 +173,12 @@ button {
 
   <div class="motion-box" id="motionText"></div>
 
-   <button class="primary" onclick="nextMotion()">Generate next motion</button>
-   <button class="secondary" onclick="location.reload()">Back to Home</button>
-   
-  <!-- Analysis (Quality Mode only) -->
-  <details class="accordion" id="analysisSection">
-  <summary>Debate Analysis</summary>
-  <div>
+  <button class="primary" onclick="nextMotion()">Generate next motion</button>
+  <button class="secondary" onclick="backToHome()">Back to Home</button>
 
-    <!-- Key Clashes -->
+  <details class="accordion" id="analysisSection">
+    <summary>Debate Analysis</summary>
+
     <details class="accordion">
       <summary>Key Clashes</summary>
       <ul>
@@ -218,7 +187,6 @@ button {
       </ul>
     </details>
 
-    <!-- Government Arguments -->
     <details class="accordion">
       <summary>Government Arguments</summary>
       <ul>
@@ -229,7 +197,6 @@ button {
       </ul>
     </details>
 
-    <!-- Opposition Arguments -->
     <details class="accordion">
       <summary>Opposition Arguments</summary>
       <ul>
@@ -240,7 +207,6 @@ button {
       </ul>
     </details>
 
-    <!-- Expected Lines of Attack -->
     <details class="accordion">
       <summary>Expected Lines of Attack</summary>
       <ul>
@@ -251,46 +217,13 @@ button {
     <p style="margin-top:16px; font-size:13px; color: var(--text-sub);">
       ※ These are example analytical directions, not the only correct answers.
     </p>
+  </details>
 
-  </div>
-</details>
-
-    <!-- 将来拡張 -->
-  <section data-future="true"></section>
-
-</section> 
-
-<!-- =====================
-     Guide
-===================== -->
-<section id="guide" class="section">
-  <h1>Guide</h1>
-  <p>How to use Ascend official.</p>
-</section>
-
-<!-- =====================
-     Learn
-===================== -->
-<section id="learn" class="section">
-  <h1>Learn</h1>
-  <p>Introduction to English Debate.</p>
-</section>
-
-<!-- =====================
-     About
-===================== -->
-<section id="about" class="section">
-  <h1>About</h1>
-  <p>Ascend official is a thinking-first debate training platform.</p>
 </section>
 
 </main>
 
 <script>
-/* =====================
-   Motion Data
-   ↓↓↓ ここにお題を入れるだけ ↓↓↓
-===================== */
 const deepMotions = [
   "This House would ban zoos.",
   "This House believes social media does more harm than good."
@@ -327,6 +260,11 @@ function nextMotion() {
   if (index >= currentMotions.length) index = 0;
   document.getElementById("motionText").innerText = currentMotions[index];
   index++;
+}
+
+function backToHome() {
+  document.getElementById("generator").style.display = "none";
+  document.getElementById("home").style.display = "block";
 }
 </script>
 
