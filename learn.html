@@ -217,5 +217,15 @@ main {
 
 </main>
 
+<script>
+  const menuButton = document.getElementById("menuButton");
+  const drawer = document.getElementById("drawer");
+
+  menuButton.addEventListener("click", () => {
+    menuButton.classList.toggle("active");
+    drawer.classList.toggle("open");
+  });
+</script>
+
 </body>
 </html>
