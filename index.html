@@ -203,6 +203,22 @@ details.accordion summary {
   font-size: 15px;
   color: var(--text-main);
 }
+
+  /* ===== Home Guide Links ===== */
+
+.home-links {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand); /* ヘッダーと同じオールドローズ */
+}
+  
 </style>
 </head>
 
@@ -248,11 +264,11 @@ details.accordion summary {
     </div>
   </div>
 
-  <p style="margin-top:40px;">
-    <a href="learn.html">New to English Debate?</a> →
-    <br/>
-    <a href="guide.html">How should I practice?</a> →
-  </p>
+  <div class="home-links">
+  <a href="learn.html">英語ディベートが初めての人 &gt;</a>
+  <a href="guide.html">このサイトの使い方 &gt;</a>
+  <a href="about.html#projects">英語ディベートの大会用のお題の制作依頼 &gt;</a>
+</div>
 </section>
 
 <!-- =====================
