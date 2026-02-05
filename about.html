@@ -148,6 +148,52 @@ main {
     grid-template-columns: 1fr;
   }
 }
+
+  .about-mission {
+  overflow: hidden;
+}
+
+.about-slider {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+}
+
+.about-slide {
+  min-width: 90%;
+  scroll-snap-align: start;
+}
+
+.about-slide h3 {
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.detail-toggle {
+  margin-top: 12px;
+  background: var(--brand);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.about-detail {
+  display: none;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  line-height: 1.7;
+}
+
+.about-detail ul {
+  padding-left: 20px;
+}
+  
 </style>
 </head>
 
@@ -180,13 +226,93 @@ main {
 
   <div class="cards">
 
-    <div class="card">
-      <h2>Our Mission</h2>
+    <div class="card about-mission">
+  <h2>Ascend official の目的</h2>
+
+  <div class="about-slider">
+
+    <!-- Slide 1 -->
+    <div class="about-slide">
+      <h3>
+        Ascend official は<br>
+        「思考順序と争点構築（Clash Construction）」を<br>
+        訓練するための存在
+      </h3>
+
       <p>
-        思考 → 構成 → 表現 の流れを守るための<br>
-        Debate Training Platform
+        Ascend official は、英語ディベートを通して<br>
+        思考順序（何から考えるか）と争点構築（どこを対立軸にするか）を訓練します。<br>
+        文章力や暗記に頼らず、初見のお題でも再現できる思考の型と判断プロセスの獲得を目的とします。<br>
+        「話せる」よりも「考えられる」人材を育てることを目標にしています。
       </p>
+
+      <button class="detail-toggle">詳しく</button>
+
+      <div class="about-detail">
+        <p>
+          Ascend official（以下 Ascend）は、英語ディベートにおける本質的スキルである<br>
+          「何を、どの順序で考え、どこを争点として切り出すか」<br>
+          すなわち <strong>思考順序（Thinking Order）</strong> と
+          <strong>Clash 構築力</strong> を体系的に訓練するためのプラットフォームです。
+        </p>
+
+        <p>
+          多くの学習者が直面する最大の課題は、英語力や知識量ではなく、<br>
+          「お題を見た瞬間に、何から考えればいいか分からない」<br>
+          という <strong>思考の初動設計の欠如</strong> です。
+        </p>
+
+        <p>
+          Ascend は、Motion を読んだ直後、立場を与えられた直後に行われる<br>
+          「頭の中の組み立て作業」を可視化・反復可能にすることで、<br>
+          どんなお題でも戦える思考フレームの獲得を目的としています。
+        </p>
+
+        <p>
+          Ascend は「話せる人」を作る場所ではなく、<br>
+          <strong>「考えられるディベーター」を作る場所</strong>です。
+        </p>
+      </div>
     </div>
+
+    <!-- Slide 2 -->
+    <div class="about-slide">
+      <h3>大会や団体との距離感について</h3>
+
+      <p>
+        Ascend official は、特定大会の思想や流行に依存せず、<br>
+        あらゆる形式に通用する思考力を鍛えるためにあります。<br>
+        大会や団体は、分析・学習のための教材として扱います。
+      </p>
+
+      <button class="detail-toggle">詳しく</button>
+
+      <div class="about-detail">
+        <p>
+          Ascend は、いかなる大会・団体の代替や下請けではありません。
+        </p>
+
+        <ul>
+          <li>特定大会の思想や評価基準に思考を固定しない</li>
+          <li>判定傾向や流行に依存しない</li>
+          <li>あらゆる形式・地域・世代に応用可能な訓練を行う</li>
+        </ul>
+
+        <p>
+          一方で、実際に行われた大会のお題（Motion）、<br>
+          想定される論点構造、試合後の復習・再構築といった形で、<br>
+          教育的分析コンテンツは独自に提供します。
+        </p>
+
+        <p>
+          これは大会を利用するのではなく、<br>
+          大会を「教材」として解剖する立場を取るということです。
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
 
     <div class="card">
       <h2>Educational Philosophy</h2>
@@ -227,6 +353,16 @@ drawer.querySelectorAll("a").forEach(link => {
     drawer.classList.remove("open");
   });
 });
+</script>
+
+  <script>
+  document.querySelectorAll('.detail-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const detail = btn.nextElementSibling;
+      detail.style.display =
+        detail.style.display === 'block' ? 'none' : 'block';
+    });
+  });
 </script>
 
 </body>
