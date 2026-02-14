@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,6 +12,7 @@
   --text-main: #1C1C1E;
   --text-sub: #6E6E73;
   --border: #E5E5EA;
+  --section-gray: #F7F7F9; /* 極薄グレー */
 }
 
 * {
@@ -103,27 +104,37 @@ a { text-decoration: none; color: inherit; }
 
 .drawer.open { transform: translateX(0); }
 
-/* ===== Main Layout ===== */
+/* ===== Layout ===== */
 
 main {
-  padding: 60px 24px;
+  padding: 32px 24px 60px; /* 上部余白削減 */
 }
 
 .section {
-  padding: 80px 0;
+  padding: 48px 0;
 }
+
+.section:first-child {
+  padding-top: 32px; /* ヘッダーとの余白半減 */
+}
+
+/* ===== Full-width gray background ===== */
 
 .section-gray {
-  background: var(--border);
+  background: var(--section-gray);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
 }
 
-/* ===== Horizontal Cards ===== */
+/* ===== Horizontal Scroll ===== */
 
 .scroll-container {
   display: flex;
   gap: 24px;
   overflow-x: auto;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
   scroll-snap-type: x mandatory;
 }
 
@@ -145,6 +156,7 @@ main {
 
 .card p {
   color: var(--text-sub);
+  font-size: 14px;
 }
 
 /* ===== Plus Button ===== */
@@ -153,13 +165,13 @@ main {
   position: absolute;
   right: 16px;
   bottom: 16px;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: black;
   color: white;
   border: none;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -168,8 +180,8 @@ main {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  backdrop-filter: blur(8px);
-  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.15);
   display: none;
   align-items: center;
   justify-content: center;
@@ -181,7 +193,7 @@ main {
   width: 90%;
   max-width: 600px;
   border-radius: 20px;
-  padding: 40px;
+  padding: 36px;
   position: relative;
   max-height: 80vh;
   overflow-y: auto;
@@ -222,71 +234,71 @@ main {
 
 <main>
 
-<!-- ===== Section 1 ===== -->
 <section class="section">
-  <h1>English Debate Foundations</h1>
+  <h1>英語ディベート基礎</h1>
+
   <div class="scroll-container">
 
     <div class="card">
-      <h3>What is English Debate?</h3>
-      <p>Structured argumentation between opposing sides.</p>
-      <button class="plus-btn" onclick="openModal('content1')">+</button>
+      <h3>英語ディベートとは？</h3>
+      <p>構造化された議論形式。</p>
+      <button class="plus-btn" onclick="openModal('1')">+</button>
     </div>
 
     <div class="card">
-      <h3>Rules & Structure</h3>
-      <p>Speech order, time allocation, POIs.</p>
-      <button class="plus-btn" onclick="openModal('content2')">+</button>
+      <h3>ルール・やり方</h3>
+      <p>スピーチ順・時間・POI。</p>
+      <button class="plus-btn" onclick="openModal('2')">+</button>
     </div>
 
     <div class="card">
-      <h3>Judging & Winning</h3>
-      <p>Clash, impact comparison, weighing.</p>
-      <button class="plus-btn" onclick="openModal('content3')">+</button>
+      <h3>勝敗・審判</h3>
+      <p>クラッシュ・比較衡量。</p>
+      <button class="plus-btn" onclick="openModal('3')">+</button>
     </div>
 
     <div class="card">
-      <h3>Debate Styles</h3>
-      <p>BP / AP / NA / WSDC overview.</p>
-      <button class="plus-btn" onclick="openModal('content4')">+</button>
+      <h3>スタイル</h3>
+      <p>BP / AP / NA / WSDC</p>
+      <button class="plus-btn" onclick="openModal('4')">+</button>
     </div>
 
     <div class="card">
-      <h3>Key Terminology</h3>
-      <p>Motion, burden, rebuttal, extension.</p>
-      <button class="plus-btn" onclick="openModal('content5')">+</button>
+      <h3>英語ディベート用語</h3>
+      <p>Motion, Burden など。</p>
+      <button class="plus-btn" onclick="openModal('5')">+</button>
     </div>
 
   </div>
 </section>
 
-<!-- ===== Section 2 ===== -->
 <section class="section section-gray">
-  <h1>Who is Debate For?</h1>
+  <h1>英語ディベートの魅力を紹介します</h1>
+
   <div class="scroll-container">
 
     <div class="card">
-      <h3>Middle School Students</h3>
-      <p>◯ Perfect for building logical thinking<br>—<br>—<br>—</p>
-      <button class="plus-btn" onclick="openModal('content6')">+</button>
+      <h3>中学生</h3>
+      <p>◯ こんな中学生にぴったり<br>—<br>—<br>—</p>
+      <button class="plus-btn" onclick="openModal('6')">+</button>
     </div>
 
     <div class="card">
-      <h3>High School Students</h3>
-      <p>◯ Ideal for university preparation<br>—<br>—<br>—</p>
-      <button class="plus-btn" onclick="openModal('content7')">+</button>
+      <h3>高校生</h3>
+      <p>◯ こんな高校生にぴったり<br>—<br>—<br>—</p>
+      <button class="plus-btn" onclick="openModal('7')">+</button>
     </div>
 
     <div class="card">
-      <h3>University Students</h3>
-      <p>◯ Strengthens global communication<br>—<br>—<br>—</p>
-      <button class="plus-btn" onclick="openModal('content8')">+</button>
+      <h3>大学生</h3>
+      <p>◯ こんな大学生にぴったり<br>—<br>—<br>—</p>
+      <button class="plus-btn" onclick="openModal('8')">+</button>
     </div>
 
     <div class="card">
-      <h3>Working Professionals</h3>
-      <p>◯ Enhances strategic persuasion<br>—<br>—<br>—</p>
-      <button class="plus-btn" onclick="openModal('content9')">+</button>
+      <h3>社会人</h3>
+      <p>◯ こんな社会人にぴったり<br>—<br>—<br>—</p>
+      <button class="plus-btn" onclick="openModal('9')">+</button>
     </div>
 
   </div>
@@ -294,7 +306,6 @@ main {
 
 </main>
 
-<!-- ===== Modal ===== -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="close-btn" onclick="closeModal()">×</button>
@@ -303,7 +314,6 @@ main {
 </div>
 
 <script>
-
 const menuButton = document.getElementById("menuButton");
 const drawer = document.getElementById("drawer");
 
@@ -312,25 +322,11 @@ menuButton.addEventListener("click", () => {
   drawer.classList.toggle("open");
 });
 
-/* ===== Modal Logic ===== */
-
 const modalOverlay = document.getElementById("modalOverlay");
 const modalContent = document.getElementById("modalContent");
 
-function openModal(contentId) {
-  const contents = {
-    content1: "<h2>What is English Debate?</h2><p>Detailed explanation goes here.</p>",
-    content2: "<h2>Rules & Structure</h2><p>Speech structure explanation.</p>",
-    content3: "<h2>Judging & Winning</h2><p>Impact comparison and clash explanation.</p>",
-    content4: "<h2>Debate Styles</h2><p>BP, AP, NA, WSDC overview.</p>",
-    content5: "<h2>Key Terminology</h2><p>Core terminology explanation.</p>",
-    content6: "<h2>Middle School</h2><p>Why debate helps early development.</p>",
-    content7: "<h2>High School</h2><p>Benefits for university admission.</p>",
-    content8: "<h2>University</h2><p>Advanced argumentation skills.</p>",
-    content9: "<h2>Professionals</h2><p>Strategic communication advantage.</p>"
-  };
-
-  modalContent.innerHTML = contents[contentId];
+function openModal(id) {
+  modalContent.innerHTML = "<h2>詳細</h2><p>ここに内容を追加できます。</p>";
   modalOverlay.style.display = "flex";
   document.body.style.overflow = "hidden";
 }
@@ -339,7 +335,6 @@ function closeModal() {
   modalOverlay.style.display = "none";
   document.body.style.overflow = "auto";
 }
-
 </script>
 
 </body>
