@@ -55,6 +55,11 @@ main {
   transition: transform .2s;
 }
 
+/* Practice用バリエーション */
+.card.practice {
+  border: 1px solid var(--brand);
+}
+
 .card:hover {
   transform: translateY(-2px);
 }
@@ -253,13 +258,13 @@ details.accordion summary {
   <h1>練習モードを選んでください</h1>
 
   <div class="cards">
-    <div class="card" onclick="startDeepPractice()">
-      <h2>🎯 deep practice</h2>
+    <div class="card practice" onclick="startDeepPractice()">
+      <h2>🎯 Deep Practice</h2>
       <p>10 curated motions<br>Deep analysis / Clash-focused</p>
     </div>
 
-    <div class="card" onclick="startQuickPractice()">
-      <h2>⚡ quick practice</h2>
+    <div class="card practice" onclick="startQuickPractice()">
+      <h2>⚡ Quick Practice</h2>
       <p>50 random motions<br>Speed & idea generation</p>
     </div>
   </div>
