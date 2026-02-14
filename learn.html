@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Guide | Ascend official</title>
+<title>Learn | Ascend official</title>
 
 <style>
 :root {
@@ -26,12 +26,9 @@ body {
   line-height: 1.6;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { text-decoration: none; color: inherit; }
 
-/* ===== Header ===== */
+/* ===== Header（変更なし） ===== */
 
 .site-header {
   position: sticky;
@@ -52,17 +49,9 @@ a {
   color: white;
 }
 
-.logo {
-  height: 28px;
-  width: auto;
-}
+.logo { height: 28px; }
 
-.brand-name {
-  font-weight: 600;
-  font-size: 15px;
-}
-
-/* ===== Hamburger ===== */
+.brand-name { font-weight: 600; font-size: 15px; }
 
 .menu-button {
   width: 28px;
@@ -90,15 +79,11 @@ a {
   transform: rotate(45deg);
   top: 9px;
 }
-.menu-button.active span:nth-child(2) {
-  opacity: 0;
-}
+.menu-button.active span:nth-child(2) { opacity: 0; }
 .menu-button.active span:nth-child(3) {
   transform: rotate(-45deg);
   top: 9px;
 }
-
-/* ===== Drawer ===== */
 
 .drawer {
   position: fixed;
@@ -116,44 +101,102 @@ a {
   transition: transform 0.3s ease;
 }
 
-.drawer.open {
-  transform: translateX(0);
-}
+.drawer.open { transform: translateX(0); }
 
-.drawer a {
-  font-size: 15px;
-  color: var(--text-main);
-}
-
-/* ===== Main ===== */
+/* ===== Main Layout ===== */
 
 main {
-  max-width: 1100px;
-  margin: auto;
-  padding: 48px 24px;
+  padding: 60px 24px;
 }
 
 .section {
-  margin-bottom: 80px;
+  padding: 80px 0;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.section-gray {
+  background: var(--border);
+}
+
+/* ===== Horizontal Cards ===== */
+
+.scroll-container {
+  display: flex;
   gap: 24px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
 }
 
 .card {
+  min-width: 280px;
+  max-width: 320px;
+  background: white;
   border: 1px solid var(--border);
-  padding: 32px;
   border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  scroll-snap-align: start;
+  flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
+.card h3 {
+  margin-top: 0;
 }
+
+.card p {
+  color: var(--text-sub);
+}
+
+/* ===== Plus Button ===== */
+
+.plus-btn {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ===== Modal ===== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.2);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 </style>
 </head>
 
@@ -165,10 +208,8 @@ main {
     <span class="brand-name">Ascend official</span>
   </a>
 
-  <button class="menu-button" id="menuButton" aria-label="Menu">
-    <span></span>
-    <span></span>
-    <span></span>
+  <button class="menu-button" id="menuButton">
+    <span></span><span></span><span></span>
   </button>
 
   <nav class="drawer" id="drawer">
@@ -179,37 +220,73 @@ main {
   </nav>
 </header>
 
-
 <main>
 
+<!-- ===== Section 1 ===== -->
 <section class="section">
-  <h1>Learn</h1>
-  <p>Foundations of English Debate.</p>
-
-  <div class="cards">
+  <h1>English Debate Foundations</h1>
+  <div class="scroll-container">
 
     <div class="card">
-      <h2>What is English Debate?</h2>
-      <p>
-        Debate is a structured discussion where teams argue for and against a motion.
-      </p>
+      <h3>What is English Debate?</h3>
+      <p>Structured argumentation between opposing sides.</p>
+      <button class="plus-btn" onclick="openModal('content1')">+</button>
     </div>
 
     <div class="card">
-      <h2>Debate Formats</h2>
-      <p>
-        BP / AP / NA / WSDC
-      </p>
+      <h3>Rules & Structure</h3>
+      <p>Speech order, time allocation, POIs.</p>
+      <button class="plus-btn" onclick="openModal('content2')">+</button>
     </div>
 
     <div class="card">
-      <h2>Speaker Roles</h2>
-      <p><br><br><br></p>
+      <h3>Judging & Winning</h3>
+      <p>Clash, impact comparison, weighing.</p>
+      <button class="plus-btn" onclick="openModal('content3')">+</button>
     </div>
 
     <div class="card">
-      <h2>How Debate Works</h2>
-      <p><br><br><br></p>
+      <h3>Debate Styles</h3>
+      <p>BP / AP / NA / WSDC overview.</p>
+      <button class="plus-btn" onclick="openModal('content4')">+</button>
+    </div>
+
+    <div class="card">
+      <h3>Key Terminology</h3>
+      <p>Motion, burden, rebuttal, extension.</p>
+      <button class="plus-btn" onclick="openModal('content5')">+</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== Section 2 ===== -->
+<section class="section section-gray">
+  <h1>Who is Debate For?</h1>
+  <div class="scroll-container">
+
+    <div class="card">
+      <h3>Middle School Students</h3>
+      <p>◯ Perfect for building logical thinking<br>—<br>—<br>—</p>
+      <button class="plus-btn" onclick="openModal('content6')">+</button>
+    </div>
+
+    <div class="card">
+      <h3>High School Students</h3>
+      <p>◯ Ideal for university preparation<br>—<br>—<br>—</p>
+      <button class="plus-btn" onclick="openModal('content7')">+</button>
+    </div>
+
+    <div class="card">
+      <h3>University Students</h3>
+      <p>◯ Strengthens global communication<br>—<br>—<br>—</p>
+      <button class="plus-btn" onclick="openModal('content8')">+</button>
+    </div>
+
+    <div class="card">
+      <h3>Working Professionals</h3>
+      <p>◯ Enhances strategic persuasion<br>—<br>—<br>—</p>
+      <button class="plus-btn" onclick="openModal('content9')">+</button>
     </div>
 
   </div>
@@ -217,14 +294,52 @@ main {
 
 </main>
 
-<script>
-  const menuButton = document.getElementById("menuButton");
-  const drawer = document.getElementById("drawer");
+<!-- ===== Modal ===== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="close-btn" onclick="closeModal()">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
 
-  menuButton.addEventListener("click", () => {
-    menuButton.classList.toggle("active");
-    drawer.classList.toggle("open");
-  });
+<script>
+
+const menuButton = document.getElementById("menuButton");
+const drawer = document.getElementById("drawer");
+
+menuButton.addEventListener("click", () => {
+  menuButton.classList.toggle("active");
+  drawer.classList.toggle("open");
+});
+
+/* ===== Modal Logic ===== */
+
+const modalOverlay = document.getElementById("modalOverlay");
+const modalContent = document.getElementById("modalContent");
+
+function openModal(contentId) {
+  const contents = {
+    content1: "<h2>What is English Debate?</h2><p>Detailed explanation goes here.</p>",
+    content2: "<h2>Rules & Structure</h2><p>Speech structure explanation.</p>",
+    content3: "<h2>Judging & Winning</h2><p>Impact comparison and clash explanation.</p>",
+    content4: "<h2>Debate Styles</h2><p>BP, AP, NA, WSDC overview.</p>",
+    content5: "<h2>Key Terminology</h2><p>Core terminology explanation.</p>",
+    content6: "<h2>Middle School</h2><p>Why debate helps early development.</p>",
+    content7: "<h2>High School</h2><p>Benefits for university admission.</p>",
+    content8: "<h2>University</h2><p>Advanced argumentation skills.</p>",
+    content9: "<h2>Professionals</h2><p>Strategic communication advantage.</p>"
+  };
+
+  modalContent.innerHTML = contents[contentId];
+  modalOverlay.style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  modalOverlay.style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
 </script>
 
 </body>
